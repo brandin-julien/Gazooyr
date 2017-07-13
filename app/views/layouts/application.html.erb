@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gazooyr</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+
+      <div class="navbar-header">
+        <%= link_to('Gazooyr', root_path, class: "navbar-brand") %>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to('Stream', gazooies_path) %></li>
+          <li><%= link_to('Actualites', news_index_path) %></li>
+          <li><a href="#">About</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <%- if user_signed_in? %>
+              <li class="dropdown">
+                <a href="#" id="account-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Moi <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to('Mon Compte', edit_user_registration_path) %></li>
+                </ul>
+              <li><%= link_to 'Se déconnecté', destroy_user_session_path, :method => :delete, id:"logout" =%></li>
+              </li>
+
+          <% else %>
+              <li><%= link_to('Inscription', new_user_registration_path) %></li>
+              <li><%= link_to('Connexion', new_user_session_path)  %>  </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> alert-success">
+        <a href="#" data-dismiss="alert" class="close">×</a>
+        <ul>
+          <li>
+            <%= value %>
+          </li>
+        </ul>
+      </div>
+  <% end %>
+
+
+
+    <%= yield %>
+  </body>
+</html>

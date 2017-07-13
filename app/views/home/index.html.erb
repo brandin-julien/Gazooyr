@@ -1,0 +1,60 @@
+
+<div class="container">
+
+
+<h1>You're on Gazooyr !</h1>
+  <h2>Le twitter qu'il est vachement plus mieux</h2>
+
+  <% if user_signed_in? %>
+      <h1>Bienvenue !</h1>
+  <% end %>
+
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <div class="well">
+
+        <% @posts.each do |post| %>
+            <p>
+              <strong>Text:</strong>
+              <%= post.text %>
+            </p>
+            <strong>user_id:</strong>
+            <%= post.user_id %>
+            </p>
+            <hr>
+
+        <% end %>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-8">
+
+      <div class="jumbotron">
+        Main
+      </div>
+
+    </div>
+
+    <div class="col-md-4">
+      <div class="jumbotron">
+        Tendances
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="jumbotron">
+        Les derniers gazooies
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>

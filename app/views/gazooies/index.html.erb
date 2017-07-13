@@ -1,0 +1,22 @@
+
+<div class="container">
+
+  <div class="row">
+  <div class="gazooies-block">
+
+    <% @posts.reverse.each do |post| %>
+        <p>
+          <strong>Text:</strong>
+          <%= post.text %>
+        </p>
+        <hr>
+
+    <% end %>
+
+
+  </div>
+  </div>
+
+
+
+</div>
